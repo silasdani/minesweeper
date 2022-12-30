@@ -8,6 +8,7 @@
     <tr>
       <td class="link-item"><%= link_to mine.name.capitalize, mine_path(mine) %></td>
       <td><%= mine.email %></td>
+      <td><%= mine.created_at.strftime("%I:%M %p - %B %d, %Y") %></td>
     </tr>
   <% end %>
   </tbody>

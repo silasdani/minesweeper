@@ -1,3 +1,5 @@
+require 'json'
+
 class Mine < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name, :mines, :rows, :columns, :email, presence: true
@@ -5,8 +7,10 @@ class Mine < ApplicationRecord
   validates :mines, numericality: { only_integer: true, greater_than: 0 }
   validates :rows, :columns, numericality: { only_integer: true, greater_than: 0 }
 
+  scope :last_created_mines , ->(n) { order(created_at: :desc).limit(n) }
+
   def map
-    self[:map].present? ? Marshal.load(self[:map]) : [[]]
+    self[:map].present? ? JSON.load(self[:map]) : [[]]
   end
 
   before_create :generate_map
@@ -15,20 +19,21 @@ class Mine < ApplicationRecord
     n = self.rows
     m = self.columns
     mines = self.mines > n * m ? n * m : self.mines
-    matrix = Array.new(n) { Array.new(m) { 0 } }
+    matrix = Array.new(n) { Array.new(m) { 9 } }
 
-    mines.times do
-      x = rand(n)
-      y = rand(m)
-
-      while matrix[x][y] == 1
-        x = rand(n)
-        y = rand(m)
+    adj = Array.new
+    (0..(n-1)).each do |i|
+      (0..(m-1)).each do |j|
+        adj << [i, j]
       end
-
-      matrix[x][y] = 1
     end
 
-    self.map = Marshal.dump(matrix)
+    adj.shuffle!
+
+    (0..(mines-1)).each do |i|
+      matrix[adj[i][0]][adj[i][1]] = 0
+    end
+
+    self.map = JSON.dump(matrix)
   end
 end
