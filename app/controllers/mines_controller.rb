@@ -16,12 +16,16 @@ class MinesController < ApplicationController
 
   def create
     @mine = Mine.new(mine_params)
-    @mine.validate
+    @mines = Mine.last_created_mines(10)
 
-    if @mine.save
-      redirect_to edit_mine_path(@mine)
-    else
-      redirect_to root_path, alert: @mine.errors.full_messages.to_s
+    respond_to do |format|
+      if @mine.save
+        format.html { redirect_to mine_url(@mine), notice: "Board was successfully created." }
+        format.json { render :show, status: :created, location: @mine }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @mine.errors, status: :unprocessable_entity }
+      end
     end
   end
 
