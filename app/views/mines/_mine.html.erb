@@ -18,9 +18,9 @@
   </table>
 
   <div class="flex flex-col p-3 mt-10 items-center mx-auto max-w-6xl overflow-scroll">
-      <% @mine.map.each_with_index do |row, i| %>
+      <% @mine.map.each do |row| %>
         <div class="flex flex-row my-1 justify-between gap-2">
-          <% row.each_with_index do |col, j| %>
+          <% row.each do |col| %>
             <button
               class="btn-light w-7 h-7"
             >

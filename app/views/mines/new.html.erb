@@ -1,17 +1,24 @@
-<%= render partial: "mines/form" %>
+<div class="grid grid-cols-2">
+  <div class="left-side">
+    <%= render partial: "mines/form" %>
+  </div>
 
-<h1 class="text-2xl font-bold">Recent mines</h1>
+  <div class="right-side">
+    <h1 class="text-2xl font-bold">Recent mines</h1>
 
-<table class="table-auto w-72">
-  <tbody>
-  <% @mines.each do |mine| %>
-    <tr>
-      <td class="link-item"><%= link_to mine.name.capitalize, mine_path(mine) %></td>
-      <td><%= mine.email %></td>
-      <td><%= mine.created_at.strftime("%I:%M %p - %B %d, %Y") %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <table class="table-auto w-72">
+      <tbody>
+        <% @mines.each do |mine| %>
+          <tr>
+            <td class="link-item"><%= link_to mine.name.capitalize, mine_path(mine) %></td>
+            <td><%= mine.email %></td>
+            <td><%= mine.created_at.strftime("%I:%M %p - %B %d, %Y") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
+    <%= link_to 'See all', mines_path, class: "text-xl link-item block font-medium mb-10" %>
+  </div>
+</div>
 
