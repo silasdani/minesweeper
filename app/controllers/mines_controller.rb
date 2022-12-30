@@ -9,12 +9,15 @@ class MinesController < ApplicationController
   def show; end
 
   def new
-    @page = "New Mine"
+    @page = "Home"
     @mine = Mine.new
+    @mines = Mine.last_created_mines(10)
   end
 
   def create
     @mine = Mine.new(mine_params)
+    @mine.validate
+
     if @mine.save
       redirect_to edit_mine_path(@mine)
     else
