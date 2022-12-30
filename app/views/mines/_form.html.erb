@@ -5,7 +5,7 @@
     <% if @mine.errors[:name].any? %>
       <div class="text-red-500 text-sm">
         <% @mine.errors[:name].each do |message| %>
-          <%= message %>
+          <div>Field <%= message %></div>
         <% end %>
       </div>
     <% end %>
@@ -17,7 +17,7 @@
     <% if @mine.errors[:email].any? %>
       <div class="text-red-500 text-sm">
         <% @mine.errors[:email].each do |message| %>
-          <%= message %>
+          <div>Field <%= message %></div>
         <% end %>
       </div>
     <% end %>
@@ -29,7 +29,7 @@
     <% if @mine.errors[:rows].any? %>
       <div class="text-red-500 text-sm">
         <% @mine.errors[:rows].each do |message| %>
-          <%= message %>
+          <div>Field <%= message %></div>
         <% end %>
       </div>
     <% end %>
@@ -41,7 +41,7 @@
     <% if @mine.errors[:columns].any? %>
       <div class="text-red-500 text-sm">
         <% @mine.errors[:columns].each do |message| %>
-          <%= message %>
+          <div>Field <%= message %></div>
         <% end %>
       </div>
     <% end %>
@@ -53,7 +53,7 @@
     <% if @mine.errors[:mines].any? %>
       <div class="text-red-500 text-sm">
         <% @mine.errors[:mines].each do |message| %>
-          <%= message %>
+          <div>Field <%= message %></div>
         <% end %>
       </div>
     <% end %>

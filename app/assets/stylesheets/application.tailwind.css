@@ -29,7 +29,11 @@
   }
 
   .link-item {
-    @apply text-indigo-600 hover:text-indigo-900;
+    @apply text-indigo-600 hover:text-indigo-900 hover:underline;
+  }
+
+  .field {
+    @apply mb-4;
   }
 
 }
