@@ -3,7 +3,7 @@ class MinesController < ApplicationController
 
   def index
     @page = "Mines"
-    @mines = Mine.all
+    @pagy, @mines = pagy(Mine.all)
   end
 
   def show; end
