@@ -21,10 +21,19 @@
   }
 
   .btn-light {
-    @apply border border-gray-300 shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50;
+    @apply border border-gray-300 shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 ;
   }
 
   td {
     @apply px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center;
   }
+
+  .link-item {
+    @apply text-indigo-600 hover:text-indigo-900;
+  }
+
+}
+
+.active-link {
+  @apply text-white;
 }

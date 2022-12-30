@@ -2,12 +2,14 @@ class MinesController < ApplicationController
   before_action :set_mine , only: [:edit, :update, :show]
 
   def index
+    @page = "Mines"
     @mines = Mine.all
   end
 
   def show; end
 
   def new
+    @page = "New Mine"
     @mine = Mine.new
   end
 
@@ -16,11 +18,12 @@ class MinesController < ApplicationController
     if @mine.save
       redirect_to edit_mine_path(@mine)
     else
-      render :new
+      redirect_to root_path, alert: @mine.errors.full_messages.to_s
     end
   end
 
   def edit
+    @page = "Edit Mine"
     set_mine
   end
 

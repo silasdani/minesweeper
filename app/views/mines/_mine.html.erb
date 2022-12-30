@@ -5,18 +5,12 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Rows</th>
-        <th>Columns</th>
-        <th>Mines</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= mine.name %></td>
         <td><%= mine.email %></td>
-        <td><%= mine.rows %></td>
-        <td><%= mine.columns %></td>
-        <td><%= mine.mines %></td>
       </tr>
     </tbody>
   </table>
@@ -26,7 +20,7 @@
         <div class="flex flex-row my-1 justify-between gap-2">
           <% row.each do |col| %>
             <button class="btn-light w-10 h-10">
-              <%= col %>
+              <%= col == 1 ? "💣" : '' %>
             </button>
           <% end %>
         </div>
