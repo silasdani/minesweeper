@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 2022_12_30_091653) do
     t.string "map"
     t.string "name"
     t.string "email"
+    t.integer "rows"
+    t.integer "columns"
+    t.integer "mines"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
