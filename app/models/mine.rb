@@ -2,7 +2,7 @@ class Mine < ApplicationRecord
   validates :name, :email, presence: true
 
   def map
-    Marshal.load(self[:map])
+    self[:map].present? ? Marshal.load(self[:map]) : [[]]
   end
 
   before_create :generate_map

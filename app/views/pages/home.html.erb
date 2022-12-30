@@ -1,2 +1,11 @@
 <h1 class="text-3xl font-bold underline">Minesweeper</h1>
 
+<%= render partial: "mines/form" %>
+
+<h1 class="text-2xl font-bold">My Mines</h1>
+
+<% @mines.each do |mine| %>
+  <%= link_to mine.name, mine_path(mine) %>
+<% end %>
+
+

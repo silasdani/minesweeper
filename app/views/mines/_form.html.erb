@@ -1,0 +1,42 @@
+<%= form_with model: @mine, local: true, html: { class: "grid place-content-center mt-10"} do |form| %>
+  <% if @mine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mine.errors.count, "error") %> prohibited this mine from being saved:</h2>
+
+      <ul>
+      <% @mine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rows %>
+    <%= form.number_field :rows %>
+  </div>
+
+  <div class="field">
+    <%= form.label :columns %>
+    <%= form.number_field :columns %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mines %>
+    <%= form.number_field :mines %>
+  </div>
+
+  <div class="actions mt-3 mx-auto">
+    <%= form.submit %>
+  </div>
+<% end %>
