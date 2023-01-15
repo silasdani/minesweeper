@@ -1,15 +1,15 @@
 class MinesController < ApplicationController
-  before_action :set_mine , only: [:edit, :update, :show]
+  before_action :set_mine, only: [:edit, :update, :show]
 
   def index
-    @page = "Mines"
+    @page = 'Mines'
     @pagy, @mines = pagy(Mine.all)
   end
 
   def show; end
 
   def new
-    @page = "Home"
+    @page = 'Home'
     @mine = Mine.new
     @mines = Mine.last_created_mines(10)
   end
@@ -20,7 +20,7 @@ class MinesController < ApplicationController
 
     respond_to do |format|
       if @mine.save
-        format.html { redirect_to mine_url(@mine), notice: "Board was successfully created." }
+        format.html { redirect_to mine_url(@mine), notice: 'Board was successfully created.' }
         format.json { render :show, status: :created, location: @mine }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,7 +30,7 @@ class MinesController < ApplicationController
   end
 
   def edit
-    @page = "Edit Mine"
+    @page = 'Edit Mine'
     set_mine
   end
 
