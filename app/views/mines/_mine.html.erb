@@ -18,16 +18,19 @@
   </table>
 
   <div class="flex flex-col p-3 mt-10 items-center mx-auto max-w-6xl overflow-scroll">
-      <% @mine.map.each do |row| %>
+    <div class="golden-border">
+      <% @mine.map.each_with_index do |row, i| %>
         <div class="flex flex-row my-1 justify-between gap-2">
-          <% row.each do |col| %>
-            <button
-              class="btn-light w-7 h-7"
-            >
-              <%= col == 0 ? "💣" : "" %>
-            </button>
+          <% row.each_with_index do |col, j| %>
+              <button
+                class="btn-light w-7 h-7"
+                onclick="window.location.href = '/mines/<%= @mine.id %>/reveal?row=<%= i %>&column=<%= j %>'"
+              >
+                <%= spot_to_emoji(col.to_s) %>
+              </button>
           <% end %>
         </div>
       <% end %>
+    </div>
 </div>
 

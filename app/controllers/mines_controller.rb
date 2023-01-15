@@ -1,5 +1,6 @@
 class MinesController < ApplicationController
   before_action :set_mine, only: [:edit, :update, :show]
+  include MinesHelper
 
   def index
     @page = 'Mines'
@@ -41,6 +42,12 @@ class MinesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def reveal
+    @mine = Mine.find(params[:id])
+    @mine.reveal(params[:row], params[:column])
+    redirect_to mine_path(@mine)
   end
 
   private

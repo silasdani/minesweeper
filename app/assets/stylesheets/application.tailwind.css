@@ -36,6 +36,9 @@
     @apply mb-4;
   }
 
+  .golden-border {
+    @apply px-1 border-8 rounded-sm border-gold;
+  }
 }
 
 .active-link {

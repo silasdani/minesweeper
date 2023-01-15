@@ -1,5 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+// add golden color
+const colors = require('tailwindcss/colors')
+colors.gold = '#FFD700'
+
 module.exports = {
   content: [
     './public/*.html',
@@ -12,6 +16,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: colors,
     },
   },
   plugins: [
